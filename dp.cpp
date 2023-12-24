@@ -6,14 +6,9 @@ using namespace std;
 using namespace std::chrono; // Added for time measurement
 
 // Function to solve the 0/1 Knapsack problem using dynamic programming
-void knapsack(int n, int c, vector<int> &values, vector<int> &weights)
+void knapsack(vector<vector<int>> &dp,int n, int c, vector<int> &values, vector<int> &weights)
 {
-    // Create a 2D table to store the maximum values for each subproblem
-    vector<vector<int>> dp(n + 1, vector<int>(c + 1, 0));
-
     // Fill the table in a bottom-up manner
-    // Measure the execution time
-    auto start = high_resolution_clock::now();
     for (int i = 1; i <= n; i++)
     {
         for (int j = 1; j <= c; j++)
@@ -28,8 +23,6 @@ void knapsack(int n, int c, vector<int> &values, vector<int> &weights)
             }
         }
     }
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(end - start);
 
     // Print the 0/1 sequence
     /*vector<int> selectedItems(n, 0);
@@ -55,12 +48,8 @@ void knapsack(int n, int c, vector<int> &values, vector<int> &weights)
     cout << "]" << endl;
     */
 
-    // Print the maximum value
-    cout << "Maximum Value: " << dp[n][c] << endl;
-
-    // Print the execution time
-    cout << "Execution Time: " << duration.count() << " microseconds" << endl;
 }
+
 
 int main()
 {
@@ -96,8 +85,23 @@ int main()
     // Close the file
     file.close();
 
+    // Create a 2D table to store the maximum values for each subproblem
+    vector<vector<int>> dp(n + 1, vector<int>(c + 1, 0));
+
+    // Measure the execution time
+    auto start = high_resolution_clock::now();
+
     // Solve the 0/1 Knapsack problem using dynamic programming
-    knapsack(n, c, values, weights);
+    knapsack(dp,n, c, values, weights);
+
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(end - start);
+
+    // Print the maximum value
+    cout << "Maximum Value: " << dp[n][c] << endl;
+
+    // Print the execution time
+    cout << "Execution Time: " << duration.count() << " microseconds" << endl;
 
     return 0;
 }
