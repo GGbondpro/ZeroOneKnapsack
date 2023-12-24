@@ -65,7 +65,7 @@ void knapsack(int n, int c, vector<int> &values, vector<int> &weights)
 int main()
 {
     // Read the input file
-    string filepath = "low-dimensional\\f10_l-d_kp_20_879";
+    string filepath = "large_scale\\knapPI_3_200_1000_1";
     ifstream file(filepath);
     if (!file.is_open())
     {

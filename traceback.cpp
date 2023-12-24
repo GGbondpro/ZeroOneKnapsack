@@ -27,7 +27,7 @@ void backtrack(vector<int>& values, vector<int>& weights, vector<int>& solution,
 }
 
 int main() {
-    string filepath = "low-dimensional\\f10_l-d_kp_20_879";
+    string filepath = "large_scale\\knapPI_3_200_1000_1";
     ifstream file(filepath);
 
     if (!file.is_open()) {
@@ -66,11 +66,12 @@ int main() {
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(end - start);
 
-    cout << "0/1 Sequence: [" << endl;
+    /*cout << "0/1 Sequence: [" << endl;
     for (int i = 0; i < n; i++) {
         cout << best_solution[i] << ",";
     }
     cout << "]" << endl;
+    */
 
     cout << "Maximum Value: " << max_value << endl;
 
