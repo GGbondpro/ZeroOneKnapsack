@@ -5,7 +5,7 @@
 using namespace std;
 using namespace std::chrono;
 
-int max_value = 0;
+int max_value ;
 vector<int> best_solution;
 
 void backtrack(vector<int>& values, vector<int>& weights, vector<int>& solution, int capacity, int current_value, int current_weight, int index) {
@@ -26,21 +26,29 @@ void backtrack(vector<int>& values, vector<int>& weights, vector<int>& solution,
     backtrack(values, weights, solution, capacity, current_value, current_weight, index + 1);
 }
 
-int main() {
-    string filepath = "low-dimensional\\f2_l-d_kp_20_878";
-    ifstream file(filepath);
+struct answer{
+    int solvingtime;
+    int maxvalue;
+};
 
-    if (!file.is_open()) {
-        cout << "Failed to open file." << endl;
-        return 0;
+//给定背包容量c，物品数量n，数据路径，返回解决问题的平均时间
+answer solveproblem(int n,int c,string filepath){
+    answer ans;
+
+    // Read the input file
+    ifstream file(filepath);
+    if (!file.is_open())
+    {
+        cerr << "Failed to open the file." << endl;
+        return ans;
     }
 
     // Read the size and capacity
-    int n, c;
-    if (!(file >> n >> c))
+    int num, cap;
+    if (!(file >> num >> cap))
     {
         cerr << "Failed to read the size and capacity from the file." << endl;
-        return 1;
+        return ans;
     }
 
     // Read the values and weights
@@ -51,32 +59,47 @@ int main() {
         if (!(file >> values[i] >> weights[i]))
         {
             cerr << "Failed to read the values and weights from the file." << endl;
-            return 1;
+            return ans;
         }
     }
 
     file.close();
 
+    max_value = 0;
     vector<int> solution(n, 0);
 
-    auto start = high_resolution_clock::now();
-
-    backtrack(values, weights, solution, c, 0, 0, 0);
-
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(end - start);
-
-    /*cout << "0/1 Sequence: [" << endl;
-    for (int i = 0; i < n; i++) {
-        cout << best_solution[i] << ",";
+    // Measure the execution time
+    int sum = 0;
+    for (int i =0;i<10;i++){
+        auto start = high_resolution_clock::now();
+        backtrack(values, weights, solution, c, 0, 0, 0);
+        auto end = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(end - start);
+        sum += duration.count();
     }
-    cout << "]" << endl;
-    */
+    int average_duration = sum/10;
 
-    cout << "Maximum Value: " << max_value << endl;
+    ans.solvingtime = average_duration;
+    ans.maxvalue = max_value;
+    return ans;
+}
 
-    // Print the execution time
-    cout << "Execution Time: " << duration.count() << " microseconds" << endl;
+
+
+int main() {
+    string filepath = "input_1000_5000";
+    
+    //清空
+    std::ofstream outfile("output_time_n.txt");
+    outfile.close();
+
+    //测试不同的n
+    outfile.open("output_time_n.txt", std::ios::app);
+    for(int i=1;i<=500;i++){
+        answer ans = solveproblem(i*2,5002,filepath);
+        outfile << 2*i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    }
+    outfile.close();
 
     return 0;
 }
