@@ -84,14 +84,13 @@ answer solveproblem(int n,int c,string filepath){
 
 int main()
 {
-    string filepath = "input_1000_5000";
+    string filepath = "large_scale\\knapPI_1_1000_1000_1";
     
-    //清空
-    std::ofstream outfile("output_time_n.txt");
+    // t-n
+    std::ofstream outfile("test_result\\dynamic_1.txt");
     outfile.close();
 
-    //测试不同的n
-    outfile.open("output_time_n.txt", std::ios::app);
+    outfile.open("test_result\\dynamic_1.txt", std::ios::app);
     for(int i=1;i<=500;i++){
         answer ans = solveproblem(i*2,5002,filepath);
         outfile << 2*i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
@@ -99,12 +98,11 @@ int main()
     outfile.close();
 
 
-    //清空
-    std::ofstream open("output_time_c.txt");
+    // t-c
+    std::ofstream open("test_result\\dynamic_2.txt");
     outfile.close();
 
-    //测试不同的c
-    outfile.open("output_time_c.txt", std::ios::app);
+    outfile.open("test_result\\dynamic_2.txt", std::ios::app);
     for(int i=1;i<=500;i++){
         answer ans = solveproblem(500,10*i,filepath);
         outfile << 500 <<" "<<10*i<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
