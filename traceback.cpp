@@ -27,7 +27,7 @@ void backtrack(vector<int>& values, vector<int>& weights, vector<int>& solution,
 }
 
 int main() {
-    string filepath = "large_scale\\knapPI_1_200_1000_1";
+    string filepath = "low-dimensional\\f2_l-d_kp_20_878";
     ifstream file(filepath);
 
     if (!file.is_open()) {

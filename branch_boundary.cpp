@@ -97,7 +97,7 @@ void branchAndBound(int n,vector<Item>& items, int capacity)
 
 int main()
 {
-    string filepath = "large_scale\\knapPI_3_200_1000_1";
+    string filepath = "large_scale\\knapPI_1_100_1000_1";
     ifstream file(filepath);
 
     if (!file.is_open())
