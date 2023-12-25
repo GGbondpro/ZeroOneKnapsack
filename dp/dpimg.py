@@ -19,7 +19,7 @@ plt.ylabel('time / nanosecond')
 plt.title('Solving time with number of items')
 
 # Save the plot in the current directory
-plt.savefig(os.path.join(os.getcwd(), 'dp_time-n.png'))
+#plt.savefig(os.path.join(os.getcwd(), 'dp_time-n.png'))
 
 plt.show()
 
@@ -42,6 +42,6 @@ plt.ylabel('time / nanosecond')
 plt.title('Solving time with backpack capacity')
 
 # Save the plot in the current directory
-plt.savefig(os.path.join(os.getcwd(), 'dp_time-c.png'))
+#plt.savefig(os.path.join(os.getcwd(), 'dp_time-c.png'))
 
 plt.show()

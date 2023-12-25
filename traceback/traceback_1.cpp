@@ -10,17 +10,15 @@ vector<int> best_solution;
 
 void backtrack(vector<int>& values, vector<int>& weights, vector<int>& solution, int capacity, int current_value, int current_weight, int index) {
     if (index == values.size()) {
-        if (current_value > max_value) {
+        if ((current_value > max_value)&&(current_weight<=capacity)) {
             max_value = current_value;
             best_solution = solution;
         }
         return;
     }
 
-    if (current_weight + weights[index] <= capacity) {
-        solution[index] = 1;
-        backtrack(values, weights, solution, capacity, current_value + values[index], current_weight + weights[index], index + 1);
-    }
+    solution[index] = 1;
+    backtrack(values, weights, solution, capacity, current_value + values[index], current_weight + weights[index], index + 1);
 
     solution[index] = 0;
     backtrack(values, weights, solution, capacity, current_value, current_weight, index + 1);
@@ -90,12 +88,12 @@ int main() {
     string filepath = "input_1000_5000";
     
     //清空
-    std::ofstream outfile("output_time_n.txt");
+    std::ofstream outfile("output1_time_n.txt");
     outfile.close();
 
     //测试不同的n
-    outfile.open("output_time_n.txt", std::ios::app);
-    for(int i=0;i<=35;i++){
+    outfile.open("output1_time_n.txt", std::ios::app);
+    for(int i=0;i<=30;i++){
         answer ans = solveproblem(i,5002,filepath);
         outfile << i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
