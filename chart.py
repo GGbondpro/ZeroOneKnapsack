@@ -25,6 +25,8 @@ def plot_dynamic_1():
     plt.savefig(os.path.join(os.getcwd(), 'image\\dynamic_1.png'))
     plt.show()
 
+
+# 绘制动态规划算法的时间图表t-c
 def plot_dynamic_2():
     # the number of items is 500
     data = []
@@ -151,8 +153,12 @@ def plot_backtrack_3():
     plt.show()
 
 
-plot_dynamic_1()
-plot_dynamic_2()
+
+
+
+
+#plot_dynamic_1()
+#plot_dynamic_2()
 #plot_backtrack_1()
 #plot_backtrack_2()
 #plot_backtrack_3()
