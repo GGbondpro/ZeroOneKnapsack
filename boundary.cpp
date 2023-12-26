@@ -1,9 +1,9 @@
 #include <iostream>
-#include <algorithm> 
+#include <algorithm>
 #include <fstream>
 #include <vector>
 #include <queue>
-#include <chrono> 
+#include <chrono>
 using namespace std;
 using namespace std::chrono;
 
@@ -11,7 +11,7 @@ struct Item
 {
     int value;
     int weight;
-    double density; 
+    double density;
 };
 
 struct Node
@@ -22,12 +22,13 @@ struct Node
     vector<int> solution;
 };
 
-struct answer{
+struct answer
+{
     int solvingtime;
     int maxvalue;
 };
 
-int max_value ;
+int max_value;
 vector<int> best_solution;
 
 bool operator<(const Node &a, const Node &b)
@@ -40,7 +41,7 @@ bool compare(Item a, Item b)
     return a.density > b.density;
 }
 
-void branchAndBound(int n,vector<Item>& items, int capacity)
+void branchAndBound(int n, vector<Item> &items, int capacity)
 {
     priority_queue<Node> pq;
     sort(items.begin(), items.end(), compare);
@@ -80,12 +81,12 @@ void branchAndBound(int n,vector<Item>& items, int capacity)
             pq.push({level, value + items[level].value, weight + items[level].weight, solution});
         }
 
-        // Exclude the item at the current level,right branch limit 
+        // Exclude the item at the current level,right branch limit
         // calculate the remaining maximum value, if it is greater than the current maximum value, then push it to the priority queue
         int remaining_capacity = capacity - weight;
         int remaining_max_value = 0;
-        for(int i = level+1; i < n; i++)
-            if(remaining_capacity >= items[i].weight)
+        for (int i = level + 1; i < n; i++)
+            if (remaining_capacity >= items[i].weight)
             {
                 remaining_capacity -= items[i].weight;
                 remaining_max_value += items[i].value;
@@ -96,13 +97,16 @@ void branchAndBound(int n,vector<Item>& items, int capacity)
                 break;
             }
         if (value + remaining_max_value >= max_value)
+        {
             solution[level] = 0;
             pq.push({level, value, weight, solution});
+        }
     }
 }
 
-//给定背包容量c，物品数量n，数据路径filepath，重复求解次数freq，返回解决问题的平均时间、最大价值
-answer solveproblem(int n,int c,string filepath,int freq=10){
+// 给定背包容量c，物品数量n，数据路径filepath，重复求解次数freq，返回解决问题的平均时间、最大价值
+answer solveproblem(int n, int c, string filepath, int freq = 10)
+{
     answer ans;
     // Read the input file
     ifstream file(filepath);
@@ -137,26 +141,25 @@ answer solveproblem(int n,int c,string filepath,int freq=10){
 
     // Measure the execution time
     int sum = 0;
-    for (int i =0;i<freq;i++){
+    for (int i = 0; i < freq; i++)
+    {
         auto start = high_resolution_clock::now();
-        branchAndBound(n,items, c);
+        branchAndBound(n, items, c);
         auto end = high_resolution_clock::now();
         auto duration = duration_cast<microseconds>(end - start);
         sum += duration.count();
     }
-    int average_duration = sum/freq;
+    int average_duration = sum / freq;
 
     ans.solvingtime = average_duration;
     ans.maxvalue = max_value;
     return ans;
 }
 
-
-
 int main()
 {
-    
-    string infilepath = "large_scale\\knapPI_1_100_1000_1";
+
+    string infilepath = "large_scale\\knapPI_1_10000_1000_1";
 
     /*
     string outfilepath = "test_result\\boundary_1.txt";
@@ -170,7 +173,7 @@ int main()
     outfile.close();
     */
 
-    answer ans = solveproblem(100,995,infilepath,1);
-    cout <<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    answer ans = solveproblem(10000, 49877, infilepath, 1);
+    cout << ans.maxvalue << " " << ans.solvingtime << endl;
     return 0;
 }
