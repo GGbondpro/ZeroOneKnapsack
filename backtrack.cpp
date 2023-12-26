@@ -183,7 +183,7 @@ int main() {
     }
     outfile.close();
     */
-    answer ans = solveproblem_2(100,995,infilepath,1);
+    answer ans = solveproblem_1(100,995,infilepath,1);
     cout <<ans.maxvalue <<" "<<ans.solvingtime<<endl;
 
     return 0;
