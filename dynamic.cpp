@@ -84,7 +84,7 @@ answer solveproblem(int n,int c,string filepath,int freq=10){
 
 int main()
 {
-    string infilepath = "large_scale\\knapPI_1_100_1000_1";
+    string infilepath = "large_scale\\knapPI_3_10000_1000_1";
     
     /*
     // t-n
@@ -113,7 +113,7 @@ int main()
     outfile.close();
     */
 
-    answer ans = solveproblem(100,995,infilepath,1);
+    answer ans = solveproblem(10000,49877,infilepath,1);
     cout <<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     return 0;
 }

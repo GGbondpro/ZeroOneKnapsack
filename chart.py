@@ -165,7 +165,7 @@ def plot_boundary_1():
 
     # left limit
     data1 = []
-    with open('test_result\\boundary_1.txt', 'r') as file:
+    with open('test_result\\boundary_1_1.txt', 'r') as file:
         for line in file:
             values = line.split()
             n = int(values[0])
@@ -178,7 +178,7 @@ def plot_boundary_1():
 
     # right limit
     data2 = []
-    with open('test_result\\boundary_2.txt', 'r') as file:
+    with open('test_result\\boundary_1_2.txt', 'r') as file:
         for line in file:
             values = line.split()
             n = int(values[0])
@@ -191,7 +191,7 @@ def plot_boundary_1():
 
     # left and right limit
     data3 = []
-    with open('test_result\\boundary_3.txt', 'r') as file: 
+    with open('test_result\\boundary_1_3.txt', 'r') as file: 
         for line in file:
             values = line.split()
             n = int(values[0])

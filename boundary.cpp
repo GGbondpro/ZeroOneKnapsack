@@ -14,7 +14,7 @@ struct Item
     int weight;
     double density;
 };
- 
+
 // 节点结构体
 struct Node
 {
@@ -93,7 +93,6 @@ void branchAndBound_1(int n, vector<Item> &items, int capacity)
     }
 }
 
-
 // best-first search, only right branch limit
 void branchAndBound_2(int n, vector<Item> &items, int capacity)
 {
@@ -120,7 +119,7 @@ void branchAndBound_2(int n, vector<Item> &items, int capacity)
         // get a new solution
         if (level == n)
         {
-            if ((value > max_value)&&(weight<= capacity))
+            if ((value > max_value) && (weight <= capacity))
             {
                 max_value = value;
                 best_solution = solution;
@@ -154,7 +153,6 @@ void branchAndBound_2(int n, vector<Item> &items, int capacity)
         }
     }
 }
-
 
 // best-first search,left and right branch limit
 void branchAndBound_3(int n, vector<Item> &items, int capacity)
@@ -376,51 +374,85 @@ answer solveproblem_3(int n, int c, string filepath, int freq = 10)
     return ans;
 }
 
-
-
 int main()
 {
-
+    /*
     string infilepath = "large_scale\\knapPI_1_200_1000_1";
-    
+
     // only left branch limit
-    string outfilepath_1 = "test_result\\boundary_1.txt";
+    string outfilepath_1 = "test_result\\boundary_1_1.txt";
     std::ofstream outfile1(outfilepath_1);
     outfile1.close();
     outfile1.open(outfilepath_1, std::ios::app);
-    for(int i=1;i<=25;i++){
-        answer ans = solveproblem_1(i,5002,infilepath,3);
-        outfile1 << i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    for (int i = 1; i <= 30; i++)
+    {
+        answer ans = solveproblem_1(i, 1008 , infilepath, 5);
+        outfile1 << i << " " << 1008 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
     }
     outfile1.close();
-    
-    // only right branch limit 
-    string outfilepath_2 = "test_result\\boundary_2.txt";
+
+    // only right branch limit
+    string outfilepath_2 = "test_result\\boundary_1_2.txt";
     std::ofstream outfile2(outfilepath_2);
     outfile2.close();
     outfile2.open(outfilepath_2, std::ios::app);
-    for(int i=1;i<=25;i++){
-        answer ans = solveproblem_2(i,5002,infilepath,3);
-        outfile2 << i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    for (int i = 1; i <= 30; i++)
+    {
+        answer ans = solveproblem_2(i, 1008 , infilepath, 5);
+        outfile2 << i << " " << 1008 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
     }
     outfile2.close();
 
     // left and right limit
-    string outfilepath_3 = "test_result\\boundary_3.txt";
+    string outfilepath_3 = "test_result\\boundary_1_3.txt";
     std::ofstream outfile3(outfilepath_3);
     outfile3.close();
     outfile3.open(outfilepath_3, std::ios::app);
-    for(int i=1;i<=25;i++){
-        answer ans = solveproblem_3(i,5002,infilepath,3);
-        outfile3 << i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    for (int i = 1; i <= 30; i++)
+    {
+        answer ans = solveproblem_3(i, 1008, infilepath, 5);
+        outfile3 << i << " " << 1008 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
     }
     outfile3.close();
+*/
 
+    
 
-   /*
-    answer ans = solveproblem_1(100, 995, infilepath, 1);
-    cout << ans.maxvalue << " " << ans.solvingtime << endl;
-    */
+    string infilepath_2 = "large_scale\\knapPI_1_500_1000_1";
+    string outfilepath_4 = "test_result\\boundary_2_1.txt";
+    std::ofstream outfile4(outfilepath_4);
+    outfile4.close();
+    outfile4.open(outfilepath_4, std::ios::app);
+    for (int i = 1; i <= 500; i++)
+    {
+        answer ans = solveproblem_3( i, 2543, infilepath_2, 5);
+        outfile4 <<  i << " " << 2543 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
+    }
+    outfile4.close();
+
+    string infilepath_3 = "large_scale\\knapPI_2_500_1000_1";
+    string outfilepath_5 = "test_result\\boundary_2_2.txt";
+    std::ofstream outfile5(outfilepath_5);
+    outfile5.close();
+    outfile5.open(outfilepath_5, std::ios::app);
+    for (int i = 1; i <= 500; i++)
+    {
+        answer ans = solveproblem_3( i, 2543, infilepath_3, 5);
+        outfile5 <<  i << " " << 2543 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
+    }
+    outfile5.close();
+
+    string infilepath_4 = "large_scale\\knapPI_3_500_1000_1";
+    string outfilepath_6 = "test_result\\boundary_2_3.txt";
+    std::ofstream outfile6(outfilepath_6);
+    outfile6.close();
+    outfile6.open(outfilepath_6, std::ios::app);
+    for (int i = 1; i <= 500; i++)
+    {
+        answer ans = solveproblem_3( i, 2543, infilepath_4, 5);
+        outfile6 <<  i << " " << 2543 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
+    }
+    outfile6.close();
 
     return 0;
 }
