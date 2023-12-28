@@ -158,33 +158,37 @@ answer solveproblem_2(int n,int c,string filepath,int freq=10){
 
 int main() {
     string infilepath = "large_scale\\knapPI_1_100_1000_1";
-    /*
+    
     //对解空间的回溯完全搜索
-    string outfilepath_1 = "test_result\\backtrace_1.txt";
+    string outfilepath_1 = "test_result\\backtrace_1_h.txt";
     std::ofstream outfile(outfilepath_1);
+
+    /*
     outfile.close();
     outfile.open(outfilepath_1, std::ios::app);
-    for(int i=1;i<=30;i++){
-        answer ans = solveproblem_1(i,5002,infilepath,10);
-        outfile << i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    for(int i=1;i<=50;i++){
+        answer ans = solveproblem_1(2*i,995,infilepath,2);
+        outfile << 2*i <<" "<<995<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
     outfile.close();
 
-
+    */
 
     // 对解空间的回溯剪枝搜索
-    string outfilepath_2 = "test_result\\backtrace_2.txt";
+    string outfilepath_2 = "test_result\\backtrace_2_h.txt";
     std::ofstream open(outfilepath_2);
     outfile.close();
     outfile.open(outfilepath_2, std::ios::app);
-    for(int i=1;i<=30;i++){
-        answer ans = solveproblem_2(i,5002,infilepath,10);
-        outfile << i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    for(int i=1;i<=50;i++){
+        answer ans = solveproblem_2(2*i,995,infilepath,2);
+        outfile << 2*i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
     outfile.close();
-    */
-    answer ans = solveproblem_1(100,995,infilepath,1);
+    
+
+    /*answer ans = solveproblem_1(100,995,infilepath,1);
     cout <<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    */
 
     return 0;
 }

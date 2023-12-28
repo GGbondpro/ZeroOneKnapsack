@@ -153,6 +153,68 @@ def plot_backtrack_3():
     plt.show()
 
 
+# 绘制best-first算法的时间图表
+def plot_boundary_1():
+
+    # the worst case
+    data0 = []
+    for n in range(1, 25):
+        data0.append((n, n*math.log2(n)))
+    n0 = [d[0] for d in data0]
+    z0 = [d[1] for d in data0]
+
+    # left limit
+    data1 = []
+    with open('test_result\\boundary_1.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data1.append((n, t))
+
+    n1 = [d[0] for d in data1]
+    t1 = [d[1] for d in data1]
+    z1 = [math.log2(i) if i > 0 else 0 for i in t1]  # 计算以2为底的对数
+
+    # right limit
+    data2 = []
+    with open('test_result\\boundary_2.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data2.append((n, t))
+    
+    n2 = [d[0] for d in data2]
+    t2 = [d[1] for d in data2]
+    z2 = [math.log2(i) if i > 0 else 0 for i in t2]  # 计算以2为底的对数
+
+    # left and right limit
+    data3 = []
+    with open('test_result\\boundary_3.txt', 'r') as file: 
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data3.append((n, t))
+    
+    n3 = [d[0] for d in data3]
+    t3 = [d[1] for d in data3]
+    z3 = [math.log2(i) if i > 0 else 0 for i in t3]  # 计算以2为底的对数
+
+    plt.scatter(n0, z0, s=1,label='the worst case')
+    plt.scatter(n1, z1, s=1,label='left limit')
+    plt.scatter(n2, z2, s=1,label='right limit') 
+    plt.scatter(n3, z3, s=1,label='left and right limit') 
+    plt.xlabel('n')
+    plt.ylabel('z=log2(t)')
+    plt.title('Boundary:Log2 of solving time with number of items')
+    plt.legend()
+
+    plt.tight_layout()  
+    plt.savefig(os.path.join(os.getcwd(), 'image\\boundary_1.png'))
+    plt.show()
+
 
 
 
@@ -162,3 +224,4 @@ def plot_backtrack_3():
 #plot_backtrack_1()
 #plot_backtrack_2()
 #plot_backtrack_3()
+plot_boundary_1()
