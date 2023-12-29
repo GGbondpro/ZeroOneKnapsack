@@ -41,16 +41,28 @@
   * 作出算法在三种相关性数据下的对比图（三条曲线，t-n）<br>
     实验数据:<br>
     1.[large_scale\knapPI_1_1000_1000_1(无相关性)](large_scale\knapPI_1_1000_1000_1)<br>
-    2.[large_scale\knapPI_2_1000_1000_1(无相关性)](large_scale\knapPI_2_1000_1000_1)<br>
-    3.[large_scale\knapPI_3_1000_1000_1(无相关性)](large_scale\knapPI_2_1000_1000_1)<br>
+    2.[large_scale\knapPI_2_1000_1000_1(弱相关性)](large_scale\knapPI_2_1000_1000_1)<br>
+    3.[large_scale\knapPI_3_1000_1000_1(强相关性)](large_scale\knapPI_2_1000_1000_1)<br>
     实验说明：不相关、弱相关、强相关三种数据，物品数量从2变化到1000，步长为2，背包容量5002不变。每个数据点统计10次求解时间，取平均值。<br>
     曲线说明：t-n,单位纳秒<br>
     ![image\dynamic_2.png](image/dynamic_3.png)
 * 回溯法的时间复杂度验证（这里的回溯是深度搜索并使用背包容量进行左支限界）
-  * 原曲线和取对数后的曲线比较图（时间-物品数）
-  * 作出最坏情况下和回溯法的曲线比较（时间对数-物品数）
-  * 作出算法在三种相关性数据下的对比图（三条曲线，t-n）
-  
+  * 原曲线和取对数后的曲线比较图（时间-物品数）<br>
+    实验数据:[large_scale\\knapPI_1_200_1000_1(无相关性)](large_scale\\knapPI_1_200_1000_1)<br>
+    实验说明：物品数量从2变化到130，步长为2，背包容量1008不变。每个数据点统计5次求解时间，取平均值。<br>
+    曲线说明：t-n,t的单位纳秒；z=log2(t),z-n，t的单位为微秒<br>
+    ![image/backtrack_1.png](image/backtrack_1.png)
+  * 作出最坏情况下和回溯法的曲线比较（时间对数-物品数）<br>
+    实验数据同上，一条是理论最坏情况下的所需时间，一条是实际时间。
+    ![image/backtrack_2.png](image/backtrack_2.png)
+  * 作出算法在三种相关性数据下的对比图（三条曲线，t-n）<br>
+    实验数据:<br>
+    1.[large_scale\\knapPI_1_200_1000_1(无相关性)](large_scale\\knapPI_1_200_1000_1)<br>
+    2.[large_scale\\knapPI_2_200_1000_1(弱相关性)](large_scale\\knapPI_2_200_1000_1)<br>
+    3.[large_scale\\knapPI_3_200_1000_1(强相关性)](large_scale\\knapPI_3_200_1000_1)<br>
+    实验说明：不相关、弱相关、强相关三种数据，物品数量从2变化到130，步长为2，背包容量1008不变。每个数据点统计5次求解时间，取平均值。<br>
+    曲线说明：t-n,单位微秒<br>
+    ![image/backtrack_3.png](image/backtrack_3.png)  
 * 分支限界算法的时间复杂度验证
   
   * 作出最坏情况、左支限界、右支限界、右支限界四条曲线对比（时间对数-物品个数）<br>
