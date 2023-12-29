@@ -416,10 +416,9 @@ int main()
         outfile3 << i << " " << 1008 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
     }
     outfile3.close();
-*/
 
     
-
+    //三种数据集的对比
     string infilepath_2 = "large_scale\\knapPI_1_200_1000_1";
     string outfilepath_4 = "test_result\\boundary_2_1.txt";
     std::ofstream outfile4(outfilepath_4);
@@ -433,7 +432,7 @@ int main()
     outfile4.close();
 
 
-    string infilepath_3 = "large_scale\\knapPI_2_500_1000_1";
+    string infilepath_3 = "large_scale\\knapPI_2_200_1000_1";
     string outfilepath_5 = "test_result\\boundary_2_2.txt";
     std::ofstream outfile5(outfilepath_5);
     outfile5.close();
@@ -446,7 +445,7 @@ int main()
     outfile5.close();
 
 
-    string infilepath_4 = "large_scale\\knapPI_3_500_1000_1";
+    string infilepath_4 = "large_scale\\knapPI_3_200_1000_1";
     string outfilepath_6 = "test_result\\boundary_2_3.txt";
     std::ofstream outfile6(outfilepath_6);
     outfile6.close();
@@ -457,7 +456,21 @@ int main()
         outfile6 <<  i << " " << 1008 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
     }
     outfile6.close();
+    */
 
+    
+    //三种算法比较，回溯
+    string infilepath_5 = "large_scale\\knapPI_1_10000_1000_1";
+    string outfilepath_7 = "test_result\\contrast_dynamic_boundary_2.txt";
+    std::ofstream outfile7(outfilepath_7);  
+    outfile7.close();
+    outfile7.open(outfilepath_7, std::ios::app);
+    for (int i = 1; i <= 1000; i++)
+    {
+        answer ans = solveproblem_3( i*10, 49877, infilepath_5, 1);
+        outfile7 <<  i*10 << " " << 49877 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
+    }
+    outfile7.close();
 
 
     return 0;

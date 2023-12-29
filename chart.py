@@ -106,7 +106,7 @@ def plot_dynamic_3():
 # 绘制回溯算法的时间图表，时间单位为纳秒
 def plot_backtrack_1():
     data = []
-    with open('test_result\\backtrace_1.txt', 'r') as file:
+    with open('test_result\\backtrack_1.txt', 'r') as file:
         for line in file:
             values = line.split()
             n = int(values[0])
@@ -338,11 +338,225 @@ def plot_boundary_2():
     plt.show()
 
 
+
+
+# 绘制三种算法在无相关性数据的表现
+def plot_contrast_1():
+    # dynamic
+    data1 = []
+    with open('test_result\\contrast_1_dynamic.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data1.append((n, t))
+
+    n1 = [d[0] for d in data1]
+    t1 = [d[1] for d in data1]
+    z1 = [math.log2(i) if i > 0 else 0 for i in t1]  # 计算以2为底的对数
+
+    # backtrack
+    data2 = []
+    with open('test_result\\contrast_1_backtrack.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data2.append((n, t))
+    
+    n2 = [d[0] for d in data2]
+    t2 = [d[1] for d in data2]
+    z2 = [math.log2(i) if i > 0 else 0 for i in t2]  # 计算以2为底的对数
+
+    # boundary
+    data3 = []
+    with open('test_result\\contrast_1_boundary.txt', 'r') as file: 
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data3.append((n, t))
+    
+    n3 = [d[0] for d in data3]
+    t3 = [d[1] for d in data3]
+    z3 = [math.log2(i) if i > 0 else 0 for i in t3]  # 计算以2为底的对数
+
+    plt.scatter(n1, z1, s=1,label='dynamic')
+    plt.scatter(n2, z2, s=1,label='backtrack') 
+    plt.scatter(n3, z3, s=1,label='boundary') 
+    plt.xlabel('n')
+    plt.ylabel('z=log2(t)')
+    plt.title('Contrast_1:Log2 of solving time with number of items')
+    plt.legend()
+
+    plt.tight_layout()  
+    plt.savefig(os.path.join(os.getcwd(), 'image\\contrast_1.png'))
+    plt.show()
+
+def plot_contrast_2():
+    # dynamic
+    data1 = []
+    with open('test_result\\contrast_2_dynamic.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data1.append((n, t))
+
+    n1 = [d[0] for d in data1]
+    t1 = [d[1] for d in data1]
+    z1 = [math.log2(i) if i > 0 else 0 for i in t1]  # 计算以2为底的对数
+
+    # backtrack
+    data2 = []
+    with open('test_result\\contrast_2_backtrack.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data2.append((n, t))
+    
+    n2 = [d[0] for d in data2]
+    t2 = [d[1] for d in data2]
+    z2 = [math.log2(i) if i > 0 else 0 for i in t2]  # 计算以2为底的对数
+
+    # boundary
+    data3 = []
+    with open('test_result\\contrast_2_boundary.txt', 'r') as file: 
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data3.append((n, t))
+    
+    n3 = [d[0] for d in data3]
+    t3 = [d[1] for d in data3]
+    z3 = [math.log2(i) if i > 0 else 0 for i in t3]  # 计算以2为底的对数
+
+    plt.scatter(n1, z1, s=1,label='dynamic')
+    plt.scatter(n2, z2, s=1,label='backtrack') 
+    plt.scatter(n3, z3, s=1,label='boundary') 
+    plt.xlabel('n')
+    plt.ylabel('z=log2(t)')
+    plt.title('Contrast_2:Log2 of solving time with number of items')
+    plt.legend()
+
+    plt.tight_layout()  
+    plt.savefig(os.path.join(os.getcwd(), 'image\\contrast_2.png'))
+    plt.show()
+
+def plot_contrast_3():
+    # dynamic
+    data1 = []
+    with open('test_result\\contrast_3_dynamic.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data1.append((n, t))
+
+    n1 = [d[0] for d in data1]
+    t1 = [d[1] for d in data1]
+    z1 = [math.log2(i) if i > 0 else 0 for i in t1]  # 计算以2为底的对数
+
+    # backtrack
+    data2 = []
+    with open('test_result\\contrast_3_backtrack.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data2.append((n, t))
+    
+    n2 = [d[0] for d in data2]
+    t2 = [d[1] for d in data2]
+    z2 = [math.log2(i) if i > 0 else 0 for i in t2]  # 计算以2为底的对数
+
+    # boundary
+    data3 = []
+    with open('test_result\\contrast_3_boundary.txt', 'r') as file: 
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data3.append((n, t))
+    
+    n3 = [d[0] for d in data3]
+    t3 = [d[1] for d in data3]
+    z3 = [math.log2(i) if i > 0 else 0 for i in t3]  # 计算以2为底的对数
+
+    plt.scatter(n1, z1, s=1,label='dynamic')
+    plt.scatter(n2, z2, s=1,label='backtrack') 
+    plt.scatter(n3, z3, s=1,label='boundary') 
+    plt.xlabel('n')
+    plt.ylabel('z=log2(t)')
+    plt.title('Contrast_3:Log2 of solving time with number of items')
+    plt.legend()
+
+    plt.tight_layout()  
+    plt.savefig(os.path.join(os.getcwd(), 'image\\contrast_3.png'))
+    plt.show()
+
+
+def plot_contrast_dynamic_boundary():
+    # dynamic
+    data1 = []
+    with open('test_result\contrast_dynamic_boundary_1.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data1.append((n, t))
+
+    n1 = [d[0] for d in data1]
+    t1 = [d[1] for d in data1]
+    z1 = [i/1000 if i > 0 else 0 for i in t1]  
+
+    # boundary
+    data2 = []
+    with open('test_result\contrast_dynamic_boundary_2.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data2.append((n, t))
+    
+    n2 = [d[0] for d in data2]
+    t2 = [d[1] for d in data2]
+    z2 = [i/1000 if i > 0 else 0 for i in t2]  
+
+
+    plt.scatter(n1, z1, s=1,label='dynamic')
+    plt.scatter(n2, z2, s=1,label='boundary') 
+    plt.xlabel('n')
+    plt.ylabel('t/nanosecond')
+    plt.title('Contrast:Log2 of solving time with number of items')
+    plt.legend()
+
+    plt.tight_layout()  
+    plt.savefig(os.path.join(os.getcwd(), 'image\\contrast_dynamic_boundary.png'))
+    plt.show()
+
+
+
+
+
+
 #plot_dynamic_1()
 #plot_dynamic_2()
 #plot_dynamic_3()
+    
+
 #plot_backtrack_1()
 #plot_backtrack_2()
-plot_backtrack_3()
+#plot_backtrack_3()
+
+
 #plot_boundary_1()
 #plot_boundary_2()
+
+#plot_contrast_1()
+#plot_contrast_2()
+#plot_contrast_3()
+    
+plot_contrast_dynamic_boundary()

@@ -157,6 +157,7 @@ answer solveproblem_2(int n,int c,string filepath,int freq=10){
 
 
 int main() {
+    /*
     string infilepath_1 = "large_scale\\knapPI_1_200_1000_1";
 
     // 对解空间的回溯搜索
@@ -165,8 +166,8 @@ int main() {
     outfile_1.close();
     outfile_1.open(outfilepath_1, std::ios::app);
     for(int i=1;i<=65;i++){
-        answer ans = solveproblem_2(2*i,1002,infilepath_1,5);
-        outfile_1 << 2*i <<" "<<1002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+        answer ans = solveproblem_2(2*i,1008,infilepath_1,5);
+        outfile_1 << 2*i <<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
     outfile_1.close();
     
@@ -177,8 +178,8 @@ int main() {
     outfile_2.close();
     outfile_2.open(outfilepath_2, std::ios::app);
     for(int i=1;i<=65;i++){
-        answer ans = solveproblem_2(2*i,1002,infilepath_2,5);
-        outfile_2 << 2*i <<" "<<1002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+        answer ans = solveproblem_2(2*i,1008,infilepath_2,5);
+        outfile_2 << 2*i <<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
     outfile_2.close();
 
@@ -188,8 +189,8 @@ int main() {
     outfile_3.close();
     outfile_3.open(outfilepath_3, std::ios::app);
     for(int i=1;i<=65;i++){
-        answer ans = solveproblem_2(2*i,1002,infilepath_3,5);
-        outfile_3 << 2*i <<" "<<1002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+        answer ans = solveproblem_2(2*i,1008,infilepath_3,5);
+        outfile_3 << 2*i <<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
     outfile_3.close();
 
@@ -199,14 +200,23 @@ int main() {
     outfile_4.close();
     outfile_4.open(outfilepath_4, std::ios::app);
     for(int i=1;i<=65;i++){
-        answer ans = solveproblem_2(2*i,1002,infilepath_4,5);
-        outfile_4 << 2*i <<" "<<1002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+        answer ans = solveproblem_2(2*i,1008,infilepath_4,5);
+        outfile_4 << 2*i <<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
     outfile_4.close();
-
-    /*answer ans = solveproblem_1(100,995,infilepath,1);
-    cout <<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     */
+   //三种算法的对比，回溯
+    string infilepath_5 = "large_scale\\knapPI_3_200_1000_1";
+    string outfilepath_5 = "test_result\\contrast_3_backtrack.txt";
+    std::ofstream outfile_5(outfilepath_5);
+    outfile_5.close();
+    outfile_5.open(outfilepath_5, std::ios::app);
+    for(int i=1;i<=130;i++){
+        answer ans = solveproblem_2(i,1008,infilepath_5,5);
+        outfile_5 << i<<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    }
+    outfile_5.close();
+    
 
     return 0;
 }
