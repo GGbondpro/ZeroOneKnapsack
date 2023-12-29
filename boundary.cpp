@@ -93,6 +93,7 @@ void branchAndBound_1(int n, vector<Item> &items, int capacity)
     }
 }
 
+
 // best-first search, only right branch limit
 void branchAndBound_2(int n, vector<Item> &items, int capacity)
 {
@@ -374,6 +375,7 @@ answer solveproblem_3(int n, int c, string filepath, int freq = 10)
     return ans;
 }
 
+
 int main()
 {
     /*
@@ -418,41 +420,45 @@ int main()
 
     
 
-    string infilepath_2 = "large_scale\\knapPI_1_500_1000_1";
+    string infilepath_2 = "large_scale\\knapPI_1_200_1000_1";
     string outfilepath_4 = "test_result\\boundary_2_1.txt";
     std::ofstream outfile4(outfilepath_4);
     outfile4.close();
     outfile4.open(outfilepath_4, std::ios::app);
-    for (int i = 1; i <= 500; i++)
+    for (int i = 1; i <= 200; i++)
     {
-        answer ans = solveproblem_3( i, 2543, infilepath_2, 5);
-        outfile4 <<  i << " " << 2543 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
+        answer ans = solveproblem_3( i, 1008, infilepath_2, 5);
+        outfile4 <<  i << " " << 1008 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
     }
     outfile4.close();
+
 
     string infilepath_3 = "large_scale\\knapPI_2_500_1000_1";
     string outfilepath_5 = "test_result\\boundary_2_2.txt";
     std::ofstream outfile5(outfilepath_5);
     outfile5.close();
     outfile5.open(outfilepath_5, std::ios::app);
-    for (int i = 1; i <= 500; i++)
+    for (int i = 1; i <= 200; i++)
     {
-        answer ans = solveproblem_3( i, 2543, infilepath_3, 5);
-        outfile5 <<  i << " " << 2543 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
+        answer ans = solveproblem_3( i, 1008, infilepath_3, 5);
+        outfile5 <<  i << " " << 1008 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
     }
     outfile5.close();
+
 
     string infilepath_4 = "large_scale\\knapPI_3_500_1000_1";
     string outfilepath_6 = "test_result\\boundary_2_3.txt";
     std::ofstream outfile6(outfilepath_6);
     outfile6.close();
     outfile6.open(outfilepath_6, std::ios::app);
-    for (int i = 1; i <= 500; i++)
+    for (int i = 1; i <= 200; i++)
     {
-        answer ans = solveproblem_3( i, 2543, infilepath_4, 5);
-        outfile6 <<  i << " " << 2543 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
+        answer ans = solveproblem_3( i, 1008, infilepath_4, 5);
+        outfile6 <<  i << " " << 1008 << " " << ans.maxvalue << " " << ans.solvingtime << endl;
     }
     outfile6.close();
+
+
 
     return 0;
 }

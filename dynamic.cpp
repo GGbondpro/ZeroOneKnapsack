@@ -84,36 +84,66 @@ answer solveproblem(int n,int c,string filepath,int freq=10){
 
 int main()
 {
-    string infilepath = "large_scale\\knapPI_3_10000_1000_1";
-    
     /*
+    string infilepath_1 = "large_scale\\knapPI_1_1000_1000_1";
+    
     // t-n
     string outfilepath_1 = "test_result\\dynamic_1.txt";
-    std::ofstream outfile(outfilepath_1);
-    outfile.close();
-
-    outfile.open(outfilepath_1, std::ios::app);
+    std::ofstream outfile1(outfilepath_1);
+    outfile1.close();
+    outfile1.open(outfilepath_1, std::ios::app);
     for(int i=1;i<=500;i++){
-        answer ans = solveproblem(i*2,5002,filepath,10);
-        outfile << 2*i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+        answer ans = solveproblem(i*2,5002,infilepath_1,10);
+        outfile1 << 2*i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
-    outfile.close();
-
+    outfile1.close();
 
     // t-c
-    sting outfilepath_2 = "test_result\\dynamic_2.txt";
-    std::ofstream open(outfilepath_2);
-    outfile.close();
-
-    outfile.open(outfilepath_2, std::ios::app);
+    string outfilepath_2 = "test_result\\dynamic_2.txt";
+    std::ofstream outfile2(outfilepath_2);
+    outfile2.close();
+    outfile2.open(outfilepath_2, std::ios::app);
     for(int i=1;i<=500;i++){
-        answer ans = solveproblem(500,10*i,filepath,10);
-        outfile << 500 <<" "<<10*i<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+        answer ans = solveproblem(500,10*i,infilepath_1,10);
+        outfile2 << 500 <<" "<<10*i<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
-    outfile.close();
+    outfile2.close();
     */
 
-    answer ans = solveproblem(10000,49877,infilepath,1);
-    cout <<ans.maxvalue <<" "<<ans.solvingtime<<endl;
-    return 0;
+    // t-n,三种相关性的对比
+    string infilepath_2 = "large_scale\\knapPI_1_1000_1000_1";
+    string outfilepath_3_1 = "test_result\\dynamic_3_1.txt";
+    std::ofstream outfile3(outfilepath_3_1);
+    outfile3.close();
+    outfile3.open(outfilepath_3_1, std::ios::app);
+    for(int i=1;i<=500;i++){
+        answer ans = solveproblem(i*2,5002,infilepath_2,10);
+        outfile3 << 2*i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    }
+    outfile3.close();
+    /*
+    string infilepath_3 = "large_scale\\knapPI_2_1000_1000_1";
+    string outfilepath_3_2 = "test_result\\dynamic_3_2.txt";
+    std::ofstream outfile4(outfilepath_3_2);
+    outfile4.close();
+    outfile4.open(outfilepath_3_2, std::ios::app);
+    for(int i=1;i<=500;i++){
+        answer ans = solveproblem(i*2,5002,infilepath_3,10);
+        outfile4 << 2*i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    }
+    outfile4.close();
+
+    string infilepath_4 = "large_scale\\knapPI_3_1000_1000_1";
+    string outfilepath_3_3 = "test_result\\dynamic_3_3.txt";
+    std::ofstream outfile5(outfilepath_3_3);
+    outfile5.close();
+    outfile5.open(outfilepath_3_3, std::ios::app);
+    for(int i=1;i<=500;i++){
+        answer ans = solveproblem(2*i,5002,infilepath_4,10);
+        outfile5 << 2*i <<" "<<5002<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    }
+    outfile5.close();
+    */
+   return 0;
+
 }

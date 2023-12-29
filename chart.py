@@ -2,7 +2,7 @@ import os
 import matplotlib.pyplot as plt
 import math
 
-# 绘制动态规划算法的时间图表t-n
+# 绘制动态规划算法的时间图表t-n，时间单位为纳秒
 def plot_dynamic_1():
     # the capacity of the backpack is 5002
     data = []
@@ -20,13 +20,13 @@ def plot_dynamic_1():
     plt.scatter(n, t, s=1)  
     plt.xlabel('n')
     plt.ylabel('t / nanosecond')
-    plt.title('Solving time with number of items')
+    plt.title('Dynamic:Solving time with number of items')
 
     plt.savefig(os.path.join(os.getcwd(), 'image\\dynamic_1.png'))
     plt.show()
 
 
-# 绘制动态规划算法的时间图表t-c
+# 绘制动态规划算法的时间图表t-c，时间单位为纳秒
 def plot_dynamic_2():
     # the number of items is 500
     data = []
@@ -44,14 +44,68 @@ def plot_dynamic_2():
     plt.scatter(c, t, s=1)  
     plt.xlabel('c')
     plt.ylabel('t / nanosecond')
-    plt.title('Solving time with backpack capacity')
+    plt.title('Dynamic:Solving time with backpack capacity')
 
     plt.savefig(os.path.join(os.getcwd(), 'image\\dynamic_2.png'))
 
     plt.show()
 
+# 绘制动态规划算法的时间图表t-n，三种不同数据相关性的曲线对比，时间单位为纳秒
+def plot_dynamic_3():
+    # no correlation
+    data1 = []
+    with open('test_result\\dynamic_3_1.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data1.append((n, t))
 
-# 绘制回溯完全搜索算法的时间图表
+    n1 = [d[0] for d in data1]
+    t1 = [d[1] for d in data1]
+    t1 = [i/1000 for i in t1]
+
+    # weak correlation
+    data2 = []
+    with open('test_result\\dynamic_3_2.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data2.append((n, t))
+    
+    n2 = [d[0] for d in data2]
+    t2 = [d[1] for d in data2]
+    t2 = [i/1000 for i in t2]
+
+    # strong correlation
+    data3 = []
+    with open('test_result\\dynamic_3_3.txt', 'r') as file: 
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data3.append((n, t))
+    
+    n3 = [d[0] for d in data3]
+    t3 = [d[1] for d in data3]
+    t3 = [i/1000 for i in t3]
+
+    plt.scatter(n1, t1, s=1,label='no correlation')
+    plt.scatter(n2, t2, s=1,label='weak correlation') 
+    plt.scatter(n3, t3, s=1,label='strong correlation') 
+    plt.xlabel('n')
+    plt.ylabel('t / nanosecond')
+    plt.title('Dynamic:Log2 of solving time with number of items')
+    plt.legend()
+
+    plt.tight_layout()  
+    plt.savefig(os.path.join(os.getcwd(), 'image\\dynamic_3.png'))
+    plt.show()
+
+
+
+# 绘制回溯完全搜索算法的时间图表，时间单位为纳秒
 def plot_backtrack_1():
     data = []
     with open('test_result\\backtrace_1.txt', 'r') as file:
@@ -63,8 +117,8 @@ def plot_backtrack_1():
 
     n = [d[0] for d in data]
     t = [d[1] for d in data]
-    z = [math.log2(i) if i > 0 else 0 for i in t]  # 计算以2为底的对数
     t = [i / 1000 for i in t]
+    z = [math.log2(i) if i > 0 else 0 for i in t]  # 计算以2为底的对数
 
     fig, axs = plt.subplots(1, 2, figsize=(10, 5))
     # 绘制t-n的散点图
@@ -83,7 +137,7 @@ def plot_backtrack_1():
     plt.savefig(os.path.join(os.getcwd(), 'image\\backtrack_1.png'))
     plt.show()
 
-# 绘制回溯剪枝搜索算法的时间图表
+# 绘制回溯剪枝搜索算法的时间图表，时间单位为纳秒
 def plot_backtrack_2():
     data = []
     with open('test_result\\backtrace_2.txt', 'r') as file:
@@ -95,8 +149,8 @@ def plot_backtrack_2():
 
     n = [d[0] for d in data]
     t = [d[1] for d in data]
-    z = [math.log2(i) if i > 0 else 0 for i in t]  # 计算以2为底的对数
     t = [i / 1000 for i in t]
+    z = [math.log2(i) if i > 0 else 0 for i in t]  # 计算以2为底的对数
 
     fig, axs = plt.subplots(1, 2, figsize=(10, 5))
     # 绘制t-n的散点图
@@ -115,7 +169,7 @@ def plot_backtrack_2():
     plt.savefig(os.path.join(os.getcwd(), 'image\\backtrack_2.png'))
     plt.show()
 
-# 绘制两种回溯算法的对比时间图表
+# 绘制两种回溯算法的对比时间图表,这个时间单位为微秒
 def plot_backtrack_3():
     data1 = []
     with open('test_result\\backtrace_1.txt', 'r') as file:
@@ -153,7 +207,7 @@ def plot_backtrack_3():
     plt.show()
 
 
-# 绘制best-first算法的时间图表
+# 绘制分支限界法不同限界条件的时间曲线
 def plot_boundary_1():
 
     # the worst case
@@ -215,13 +269,65 @@ def plot_boundary_1():
     plt.savefig(os.path.join(os.getcwd(), 'image\\boundary_1.png'))
     plt.show()
 
+# 绘制分支限界算法的在不同数据相关性下的时间曲线
+def plot_boundary_2():
+    # no correlation
+    data1 = []
+    with open('test_result\\boundary_2_1.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data1.append((n, t))
 
+    n1 = [d[0] for d in data1]
+    t1 = [d[1] for d in data1]
+    z1 = [math.log2(i) if i > 0 else 0 for i in t1]  # 计算以2为底的对数
 
+    # weak correlation
+    data2 = []
+    with open('test_result\\boundary_2_2.txt', 'r') as file:
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data2.append((n, t))
+    
+    n2 = [d[0] for d in data2]
+    t2 = [d[1] for d in data2]
+    z2 = [math.log2(i) if i > 0 else 0 for i in t2]  # 计算以2为底的对数
+
+    # strong correlation
+    data3 = []
+    with open('test_result\\boundary_2_3.txt', 'r') as file: 
+        for line in file:
+            values = line.split()
+            n = int(values[0])
+            t = int(values[3])
+            data3.append((n, t))
+    
+    n3 = [d[0] for d in data3]
+    t3 = [d[1] for d in data3]
+    z3 = [math.log2(i) if i > 0 else 0 for i in t3]  # 计算以2为底的对数
+
+    plt.scatter(n1, z1, s=1,label='no correlation')
+    plt.scatter(n2, z2, s=1,label='weak correlation') 
+    plt.scatter(n3, z3, s=1,label='strong correlation') 
+    plt.xlabel('n')
+    plt.ylabel('z=log2(t)')
+    plt.title('Boundary:Log2 of solving time with number of items')
+    plt.legend()
+
+    plt.tight_layout()  
+    plt.savefig(os.path.join(os.getcwd(), 'image\\boundary_2.png'))
+    plt.show()
 
 
 #plot_dynamic_1()
 #plot_dynamic_2()
+plot_dynamic_3()
 #plot_backtrack_1()
 #plot_backtrack_2()
 #plot_backtrack_3()
-plot_boundary_1()
+#plot_boundary_1()
+#plot_boundary_2()
