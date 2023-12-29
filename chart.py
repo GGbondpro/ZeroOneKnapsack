@@ -146,7 +146,7 @@ def plot_backtrack_2():
 
     # the actually backtrack
     data2 = []
-    with open('test_result\\backtrace_1.txt', 'r') as file:
+    with open('test_result\\backtrack_1.txt', 'r') as file:
         for line in file:
             values = line.split()
             n = int(values[0])

@@ -160,7 +160,7 @@ int main() {
     string infilepath_1 = "large_scale\\knapPI_1_200_1000_1";
 
     // 对解空间的回溯搜索
-    string outfilepath_1 = "test_result\\backtrace_1.txt";
+    string outfilepath_1 = "test_result\\backtrack_1.txt";
     std::ofstream outfile_1(outfilepath_1);
     outfile_1.close();
     outfile_1.open(outfilepath_1, std::ios::app);
@@ -172,7 +172,7 @@ int main() {
     
     // 三种相关性性数据的对比
     string infilepath_2 = "large_scale\\knapPI_1_200_1000_1";
-    string outfilepath_2 = "test_result\\backtrace_3_1.txt";
+    string outfilepath_2 = "test_result\\backtrack_3_1.txt";
     std::ofstream outfile_2(outfilepath_2);
     outfile_2.close();
     outfile_2.open(outfilepath_2, std::ios::app);
@@ -183,7 +183,7 @@ int main() {
     outfile_2.close();
 
     string infilepath_3 = "large_scale\\knapPI_2_200_1000_1";
-    string outfilepath_3 = "test_result\\backtrace_3_2.txt";
+    string outfilepath_3 = "test_result\\backtrack_3_2.txt";
     std::ofstream outfile_3(outfilepath_3);
     outfile_3.close();
     outfile_3.open(outfilepath_3, std::ios::app);
@@ -194,7 +194,7 @@ int main() {
     outfile_3.close();
 
     string infilepath_4 = "large_scale\\knapPI_3_200_1000_1";
-    string outfilepath_4 = "test_result\\backtrace_3_3.txt";
+    string outfilepath_4 = "test_result\\backtrack_3_3.txt";
     std::ofstream outfile_4(outfilepath_4);
     outfile_4.close();
     outfile_4.open(outfilepath_4, std::ios::app);
