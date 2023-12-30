@@ -193,11 +193,13 @@ void branchAndBound_3(int n, vector<Item> &items, int capacity)
         if (weight + items[level].weight <= capacity)
         {
             solution[level] = 1;
-            pq.push({level, value + items[level].value, weight + items[level].weight, solution});
+            pq.push({level, value + items[level].value, 
+            weight + items[level].weight, solution});
         }
 
         // Exclude the item at the current level, right branch limit
-        // calculate the remaining maximum value, if it is greater than the current maximum value, then push it to the priority queue
+        // calculate the remaining maximum value, 
+        //if it is greater than the current maximum value, then push it to the priority queue
         int remaining_capacity = capacity - weight;
         int remaining_max_value = 0;
         for (int i = level + 1; i < n; i++)
