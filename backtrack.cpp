@@ -156,12 +156,25 @@ answer solveproblem_2(int n,int c,string filepath,int freq=10){
 }
 
 
-int main() {
-    /*
-    string infilepath_1 = "large_scale\\knapPI_1_200_1000_1";
+// test function
+// validate t-n
+void test_1(){
+    string infilepath = "large_scale\\knapPI_1_200_1000_1";
+    string outfilepath = "test_result\\backtrack_1.txt";
+    std::ofstream outfile(outfilepath);
+    outfile.close();
+    outfile.open(outfilepath, std::ios::app);
+    for(int i=1;i<=65;i++){
+        answer ans = solveproblem_2(2*i,1008,infilepath,5);
+        outfile << 2*i <<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    }
+    outfile.close();
+}
 
-    // 对解空间的回溯搜索
-    string outfilepath_1 = "test_result\\backtrack_1.txt";
+// 三种相关性性数据的对比
+void test_2(){
+    string infilepath_1 = "large_scale\\knapPI_1_200_1000_1";
+    string outfilepath_1 = "test_result\\backtrack_3_1.txt";
     std::ofstream outfile_1(outfilepath_1);
     outfile_1.close();
     outfile_1.open(outfilepath_1, std::ios::app);
@@ -170,10 +183,9 @@ int main() {
         outfile_1 << 2*i <<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
     outfile_1.close();
-    
-    // 三种相关性性数据的对比
-    string infilepath_2 = "large_scale\\knapPI_1_200_1000_1";
-    string outfilepath_2 = "test_result\\backtrack_3_1.txt";
+
+    string infilepath_2 = "large_scale\\knapPI_2_200_1000_1";
+    string outfilepath_2 = "test_result\\backtrack_3_2.txt";
     std::ofstream outfile_2(outfilepath_2);
     outfile_2.close();
     outfile_2.open(outfilepath_2, std::ios::app);
@@ -183,8 +195,8 @@ int main() {
     }
     outfile_2.close();
 
-    string infilepath_3 = "large_scale\\knapPI_2_200_1000_1";
-    string outfilepath_3 = "test_result\\backtrack_3_2.txt";
+    string infilepath_3 = "large_scale\\knapPI_3_200_1000_1";
+    string outfilepath_3 = "test_result\\backtrack_3_3.txt";
     std::ofstream outfile_3(outfilepath_3);
     outfile_3.close();
     outfile_3.open(outfilepath_3, std::ios::app);
@@ -193,30 +205,54 @@ int main() {
         outfile_3 << 2*i <<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
     outfile_3.close();
+}
 
-    string infilepath_4 = "large_scale\\knapPI_3_200_1000_1";
-    string outfilepath_4 = "test_result\\backtrack_3_3.txt";
-    std::ofstream outfile_4(outfilepath_4);
-    outfile_4.close();
-    outfile_4.open(outfilepath_4, std::ios::app);
-    for(int i=1;i<=65;i++){
-        answer ans = solveproblem_2(2*i,1008,infilepath_4,5);
-        outfile_4 << 2*i <<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
-    }
-    outfile_4.close();
-    */
-   //三种算法的对比，回溯
-    string infilepath_5 = "large_scale\\knapPI_3_200_1000_1";
-    string outfilepath_5 = "test_result\\contrast_3_backtrack.txt";
-    std::ofstream outfile_5(outfilepath_5);
-    outfile_5.close();
-    outfile_5.open(outfilepath_5, std::ios::app);
+//三种算法的对比，回溯
+void test_contrast(){
+    string infilepath_1 = "large_scale\\knapPI_1_200_1000_1";
+    string outfilepath_1 = "test_result\\contrast_1_backtrack.txt";
+    std::ofstream outfile_1(outfilepath_1);
+    outfile_1.close();
+    outfile_1.open(outfilepath_1, std::ios::app);
     for(int i=1;i<=130;i++){
-        answer ans = solveproblem_2(i,1008,infilepath_5,5);
-        outfile_5 << i<<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+        answer ans = solveproblem_2(i,1008,infilepath_1,5);
+        outfile_1 << i<<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
     }
-    outfile_5.close();
+    outfile_1.close();
     
+    string infilepath_2 = "large_scale\\knapPI_2_200_1000_1";
+    string outfilepath_2 = "test_result\\contrast_2_backtrack.txt";
+    std::ofstream outfile_2(outfilepath_2);
+    outfile_2.close();
+    outfile_2.open(outfilepath_2, std::ios::app);
+    for(int i=1;i<=130;i++){
+        answer ans = solveproblem_2(i,1008,infilepath_2,5);
+        outfile_2 << i<<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    }
+    outfile_2.close();
+
+    string infilepath_3 = "large_scale\\knapPI_3_200_1000_1";
+    string outfilepath_3 = "test_result\\contrast_3_backtrack.txt";
+    std::ofstream outfile_3(outfilepath_3);
+    outfile_3.close();
+    outfile_3.open(outfilepath_3, std::ios::app);
+    for(int i=1;i<=130;i++){
+        answer ans = solveproblem_2(i,1008,infilepath_3,5);
+        outfile_3 << i<<" "<<1008<<" "<<ans.maxvalue <<" "<<ans.solvingtime<<endl;
+    }
+    outfile_3.close();
+}
+
+
+
+
+
+
+int main() {
+
+    test_1();   // validate t-n
+    test_2();   // 三种相关性性数据的对比
+    //test_contrast();   // 三种算法的对比，回溯
 
     return 0;
 }

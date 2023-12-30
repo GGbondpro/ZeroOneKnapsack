@@ -552,11 +552,11 @@ def plot_contrast_dynamic_boundary():
 #plot_backtrack_3()
 
 
-#plot_boundary_1()
+plot_boundary_1()
 #plot_boundary_2()
 
 #plot_contrast_1()
 #plot_contrast_2()
 #plot_contrast_3()
     
-plot_contrast_dynamic_boundary()
+#plot_contrast_dynamic_boundary()
