@@ -7,7 +7,7 @@
 using namespace std;
 using namespace std::chrono;
 
-// 物品结构体
+// Item structure
 struct Item
 {
     int value;
@@ -15,7 +15,7 @@ struct Item
     double density;
 };
 
-// 节点结构体
+// Node structure
 struct Node
 {
     int level;
@@ -24,20 +24,20 @@ struct Node
     vector<int> solution;
 };
 
-// 答案结构体
+// Answer structure
 struct answer
 {
     int solvingtime;
     int maxvalue;
 };
 
-// 比较函数，对物品按照单位重量价值从大到小排序
+// Comparison function, sorts items in descending order of value-to-weight ratio
 bool compare(Item a, Item b)
 {
     return a.density > b.density;
 }
 
-// 比较函数，用于节点优先队列的比较
+// Comparison function for node priority queue
 bool operator<(const Node &a, const Node &b)
 {
     return a.value < b.value;
@@ -189,14 +189,14 @@ void branchAndBound_3(int n, vector<Item> &items, int capacity)
             continue;
         }
 
-        // Include the item at the current level,left branch limit
+        // Include the item at the current level, left branch limit
         if (weight + items[level].weight <= capacity)
         {
             solution[level] = 1;
             pq.push({level, value + items[level].value, weight + items[level].weight, solution});
         }
 
-        // Exclude the item at the current level,right branch limit
+        // Exclude the item at the current level, right branch limit
         // calculate the remaining maximum value, if it is greater than the current maximum value, then push it to the priority queue
         int remaining_capacity = capacity - weight;
         int remaining_max_value = 0;
@@ -219,7 +219,7 @@ void branchAndBound_3(int n, vector<Item> &items, int capacity)
     }
 }
 
-// 给定背包容量c，物品数量n，数据路径filepath，重复求解次数freq，返回解决问题的平均时间、最大价值
+// Given the capacity c, the number of items n, the data file path filepath, and the number of repetitions freq, return the average time and maximum value of solving the problem
 answer solveproblem_1(int n, int c, string filepath, int freq = 10)
 {
     answer ans;
@@ -271,7 +271,7 @@ answer solveproblem_1(int n, int c, string filepath, int freq = 10)
     return ans;
 }
 
-// 给定背包容量c，物品数量n，数据路径filepath，重复求解次数freq，返回解决问题的平均时间、最大价值
+// Given the capacity c, the number of items n, the data file path filepath, and the number of repetitions freq, return the average time and maximum value of solving the problem
 answer solveproblem_2(int n, int c, string filepath, int freq = 10)
 {
     answer ans;
@@ -323,7 +323,7 @@ answer solveproblem_2(int n, int c, string filepath, int freq = 10)
     return ans;
 }
 
-// 给定背包容量c，物品数量n，数据路径filepath，重复求解次数freq，返回解决问题的平均时间、最大价值
+// Given the capacity c, the number of items n, the data file path filepath, and the number of repetitions freq, return the average time and maximum value of solving the problem
 answer solveproblem_3(int n, int c, string filepath, int freq = 10)
 {
     answer ans;
@@ -419,7 +419,7 @@ void test_1()
 }
 
 
-//三种数据集的对比
+// Comparison of three datasets
 void test_2(){
     string infilepath_2 = "large_scale\\knapPI_1_200_1000_1";
     string outfilepath_4 = "test_result\\boundary_2_1.txt";
@@ -512,15 +512,13 @@ void test_contrast(){
     }
     outfile_4.close();
 
-
-
 }
 
 int main()
 {
-    test_1();   // validate t-n
-    //test_2();   // 三种数据集的对比
-    //test_contrast();    // 三种算法比较：分支限界
+    //test_1();   // validate t-n
+    //test_2();   // Comparison of three datasets
+    test_contrast();    // Comparison of three algorithms: branch and bound
 
     return 0;
 }

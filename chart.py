@@ -161,7 +161,7 @@ def plot_backtrack_2():
     plt.scatter(n2, z2, s=1,label='the actually backtrack') 
     plt.xlabel('n')
     plt.ylabel('z=log2(t)')
-    plt.title('Log2 of solving time with number of items')
+    plt.title('Backtrack:Log2 of solving time with number of items')
     plt.legend()
 
     plt.tight_layout()  
@@ -282,6 +282,19 @@ def plot_boundary_1():
 
     plt.tight_layout()  
     plt.savefig(os.path.join(os.getcwd(), 'image\\boundary_1.png'))
+    plt.show()
+
+
+    plt.scatter(n1, z1, s=1,label='left limit')
+    plt.scatter(n2, z2, s=1,label='right limit') 
+    plt.scatter(n3, z3, s=1,label='left and right limit') 
+    plt.xlabel('n')
+    plt.ylabel('z=log2(t)')
+    plt.title('Boundary:Log2 of solving time with number of items')
+    plt.legend()
+
+    plt.tight_layout()  
+    plt.savefig(os.path.join(os.getcwd(), 'image\\boundary_1(1).png'))
     plt.show()
 
 # 绘制分支限界算法的在不同数据相关性下的时间曲线
@@ -551,12 +564,11 @@ def plot_contrast_dynamic_boundary():
 #plot_backtrack_2()
 #plot_backtrack_3()
 
-
 plot_boundary_1()
-#plot_boundary_2()
+plot_boundary_2()
 
-#plot_contrast_1()
-#plot_contrast_2()
-#plot_contrast_3()
+plot_contrast_1()
+plot_contrast_2()
+plot_contrast_3()
     
-#plot_contrast_dynamic_boundary()
+plot_contrast_dynamic_boundary()

@@ -30,7 +30,7 @@ struct answer{
     int maxvalue;
 };
 
-//给定背包容量c，物品数量n，数据路径filepath，重复求解次数freq，返回解决问题的平均时间、最大价值
+// Given the knapsack capacity c, the number of items n, the data file path filepath, and the number of repetitions freq, return the average solving time and the maximum value of the solution
 answer solveproblem(int n,int c,string filepath,int freq=10){
     answer ans;
 
@@ -114,7 +114,7 @@ void test_2(){
 }
 
 
-// validate t-n,三种相关性数据对算法的影响
+// validate t-n, the impact of three types of correlation data on the algorithm
 void test_3(){
     string infilepath_2 = "large_scale\\knapPI_1_1000_1000_1";
     string outfilepath_3_1 = "test_result\\dynamic_3_1.txt";
@@ -150,7 +150,7 @@ void test_3(){
     outfile5.close();
 }
 
-// 三种算法比较：动态规划
+// Comparison of three algorithms: dynamic programming
 void test_contrast(){
     string infilepath_5 = "large_scale\\knapPI_1_200_1000_1";
     string outfilepath_5 = "test_result\\contrast_1_dynamic.txt";
@@ -204,10 +204,10 @@ void test_contrast(){
 int main()
 {
 
-    test_1();    //t-n
+    //test_1();    //t-n
     //test_2();    //t-c
-    //test_3();    //t-n,三种相关性数据对算法的影响
-    //test_contrast();    // 三种算法比较：动态规划
+    //test_3();    //t-n, the impact of three types of correlation data on the algorithm
+    test_contrast();    // Comparison of three algorithms: dynamic programming
 
    return 0;
 

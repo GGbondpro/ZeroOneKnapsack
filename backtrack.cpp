@@ -8,7 +8,7 @@ using namespace std::chrono;
 int max_value ;
 vector<int> best_solution;
 
-// 对解空间的回溯完全搜索
+// Backtracking complete search on the solution space
 void backtrack_1(vector<int>& values, vector<int>& weights, vector<int>& solution, int capacity, int current_value, int current_weight, int index) {
     if (index == values.size()) {
         if ((current_value > max_value)&&(current_weight<=capacity)) {
@@ -25,7 +25,7 @@ void backtrack_1(vector<int>& values, vector<int>& weights, vector<int>& solutio
     backtrack_1(values, weights, solution, capacity, current_value, current_weight, index + 1);
 }
 
-// 对解空间的回溯剪枝搜索
+// Backtracking pruning search on the solution space
 void backtrack_2(vector<int>& values, vector<int>& weights, vector<int>& solution, int capacity, int current_value, int current_weight, int index) {
     if (index == values.size()) {
         if (current_value > max_value) {
@@ -49,7 +49,7 @@ struct answer{
     int maxvalue;
 };
 
-//给定背包容量c，物品数量n，数据路径filepath，重复求解次数freq，返回解决问题的平均时间、最大价值
+// Solve the problem with given knapsack capacity c, item count n, data file path filepath, and repetition frequency freq. Return the average solving time and maximum value.
 answer solveproblem_1(int n,int c,string filepath,int freq=10){
     answer ans;
 
@@ -102,7 +102,7 @@ answer solveproblem_1(int n,int c,string filepath,int freq=10){
     return ans;
 }
 
-//给定背包容量c，物品数量n，数据路径filepath，重复求解次数freq，返回解决问题的平均时间、最大价值
+// Solve the problem with given knapsack capacity c, item count n, data file path filepath, and repetition frequency freq. Return the average solving time and maximum value.
 answer solveproblem_2(int n,int c,string filepath,int freq=10){
     answer ans;
 
@@ -156,8 +156,8 @@ answer solveproblem_2(int n,int c,string filepath,int freq=10){
 }
 
 
-// test function
-// validate t-n
+// Test function
+// Validate t-n
 void test_1(){
     string infilepath = "large_scale\\knapPI_1_200_1000_1";
     string outfilepath = "test_result\\backtrack_1.txt";
@@ -171,7 +171,7 @@ void test_1(){
     outfile.close();
 }
 
-// 三种相关性性数据的对比
+// Compare three types of related data
 void test_2(){
     string infilepath_1 = "large_scale\\knapPI_1_200_1000_1";
     string outfilepath_1 = "test_result\\backtrack_3_1.txt";
@@ -207,7 +207,7 @@ void test_2(){
     outfile_3.close();
 }
 
-//三种算法的对比，回溯
+// Compare three algorithms, backtrack
 void test_contrast(){
     string infilepath_1 = "large_scale\\knapPI_1_200_1000_1";
     string outfilepath_1 = "test_result\\contrast_1_backtrack.txt";
@@ -243,16 +243,11 @@ void test_contrast(){
     outfile_3.close();
 }
 
-
-
-
-
-
 int main() {
 
-    test_1();   // validate t-n
-    test_2();   // 三种相关性性数据的对比
-    //test_contrast();   // 三种算法的对比，回溯
+    //test_1();   // Validate t-n
+    //test_2();   // Compare three types of related data
+    test_contrast();   // Compare three algorithms, backtrack
 
     return 0;
 }
