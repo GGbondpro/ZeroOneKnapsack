@@ -19,7 +19,7 @@ def plot_dynamic_1():
 
     plt.scatter(n, t, s=1)  
     plt.xlabel('n')
-    plt.ylabel('t / nanosecond')
+    plt.ylabel('t / millisecond')
     plt.title('Dynamic:Solving time with number of items')
 
     plt.savefig(os.path.join(os.getcwd(), 'image\\dynamic_1.png'))
@@ -43,7 +43,7 @@ def plot_dynamic_2():
 
     plt.scatter(c, t, s=1)  
     plt.xlabel('c')
-    plt.ylabel('t / nanosecond')
+    plt.ylabel('t / millisecond')
     plt.title('Dynamic:Solving time with backpack capacity')
 
     plt.savefig(os.path.join(os.getcwd(), 'image\\dynamic_2.png'))
@@ -95,7 +95,7 @@ def plot_dynamic_3():
     plt.scatter(n2, t2, s=1,label='weak correlation') 
     plt.scatter(n3, t3, s=1,label='strong correlation') 
     plt.xlabel('n')
-    plt.ylabel('t / nanosecond')
+    plt.ylabel('t / millisecond')
     plt.title('Dynamic:Log2 of solving time with number of items')
     plt.legend()
 
@@ -122,7 +122,7 @@ def plot_backtrack_1():
     # 绘制t-n的散点图
     axs[0].scatter(n, t, s=1)
     axs[0].set_xlabel('n')
-    axs[0].set_ylabel('t / nanosecond')
+    axs[0].set_ylabel('t / millisecond')
     axs[0].set_title('Backtrack:Solving time with number of items')
 
     # 绘制z-n的散点图
@@ -542,7 +542,7 @@ def plot_contrast_dynamic_boundary():
     plt.scatter(n1, z1, s=1,label='dynamic')
     plt.scatter(n2, z2, s=1,label='boundary') 
     plt.xlabel('n')
-    plt.ylabel('t/nanosecond')
+    plt.ylabel('t/millisecond')
     plt.title('Contrast:Log2 of solving time with number of items')
     plt.legend()
 
